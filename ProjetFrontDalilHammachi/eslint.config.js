@@ -13,7 +13,17 @@ export default [
     ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
   },
 
+  
   ...pluginVue.configs['flat/essential'],
   ...vueTsEslintConfig(),
   skipFormatting,
+
+  {
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  },
 ]
+
+
+
