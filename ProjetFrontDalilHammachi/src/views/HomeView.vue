@@ -72,6 +72,10 @@ import Form from '../components/form/Form.vue';
       no-repeat center center;
     background-size: cover; // S'assure que l'image occupe tout l'arrière-plan
     min-height: 100vh; // Le conteneur prend toute la hauteur de l'écran
+    color: $white;
+    h1,{
+      color: $primaryColorMobile;
+    }
   }
 }
 
