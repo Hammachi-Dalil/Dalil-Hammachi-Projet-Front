@@ -29,4 +29,4 @@ jobs:
 
       # Lancer le check Eslint
       - name: Eslint Check
-        run: npm run lint
+        run: npm run lint 
