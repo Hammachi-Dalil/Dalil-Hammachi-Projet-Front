@@ -18,10 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
-      
-      - name: go to main directory
-        run: cd ProjetFrontDalilHammachi
+          node-version: 20  
 
       # Installer les dépendances NPM
       - name: Install dependencies
