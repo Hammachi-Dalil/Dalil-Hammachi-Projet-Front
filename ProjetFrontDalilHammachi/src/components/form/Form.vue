@@ -71,6 +71,7 @@ export default defineComponent({
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
+
   &__title {
     text-align: center;
     margin-bottom: 20px;
@@ -116,5 +117,11 @@ export default defineComponent({
   @include small-down() {
     margin: 2vh;
   }
+
+  @include large-up() {
+   width: 80%;
+  }
+
+
 }
 </style>
