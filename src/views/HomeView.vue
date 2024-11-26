@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import Form from '../components/form/Form.vue';
+import MyForm from '../components/form/Form.vue';
 </script>
 
 <template>
   <main class="home">
     <div class="home__content">
       <div class="home__image">
-        <img src=" C:\Users\grifd\Documents\GitHub\Dalil-Hammachi-Projet-Front\ProjetFrontDalilHammachi\src\img\ObiWanCitation.png" alt="Illustration" />
+        <img src=" C:\Users\grifd\Documents\GitHub\Dalil-Hammachi-Projet-Front\src\img\ObiWanCitation.png" alt="Illustration" />
       </div>
       <div class="home__form">
         <h1 class="title">Bienvenue sur la page d'accueil</h1>
         <h2 class="subtitle">Veuillez vous connecter</h2>
-        <Form />
+        <MyForm />
       </div>
     </div>
   </main>
@@ -68,12 +68,12 @@ import Form from '../components/form/Form.vue';
   }
 
   @include large-down() {
-    background: url('C:/Users/grifd/Documents/GitHub/Dalil-Hammachi-Projet-Front/ProjetFrontDalilHammachi/src/img/Obi.png')
+    background: url('C:/Users/grifd/Documents/GitHub/Dalil-Hammachi-Projet-Front/src/img/Obi.png')
       no-repeat center center;
     background-size: cover; // S'assure que l'image occupe tout l'arrière-plan
     min-height: 100vh; // Le conteneur prend toute la hauteur de l'écran
     color: $white;
-    h1,{
+    h1{
       color: $primaryColorMobile;
     }
   }
