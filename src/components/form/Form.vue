@@ -1,34 +1,26 @@
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import {ref } from "vue";
 import MyButton from "../Button/Button.vue";
 
-export default defineComponent({
-  name: "LoginForm",
-  components: {
-    MyButton,
-  },
-  setup() {
-    const email = ref<string>("");
-    const password = ref<string>("");
+const email = ref<string>("");
+const password = ref<string>("");
 
-    const onSubmit = (): void => {
-      console.log("Email:", email.value);
-      console.log("Password:", password.value);
-    };
+const onSubmit = (): void => {
+  console.log("Email:", email.value);
+  console.log("Password:", password.value);
+};
 
-    return {
-      email,
-      password,
-      onSubmit,
-    };
-  },
-});
+defineProps({
+  titre: String
+})
+
+
 </script>
 
 
 <template>
   <div class="login-form">
-    <h2 class="login-form__title">Connexion</h2>
+    <h2 class="login-form__title">{{ titre }}</h2>
     <form class="login-form__form" @submit.prevent="onSubmit">
       <div class="login-form__group">
         <label for="email" class="login-form__label">Email</label>
@@ -55,7 +47,7 @@ export default defineComponent({
       </div>
 
       <!-- Bouton pour valider -->
-      <MyButton class="login-form__button" :label="'Se connecter'" />
+      <MyButton class="login-form__button" type="submit">{{ titre }}</MyButton>
     </form>
   </div>
 </template>
@@ -66,7 +58,7 @@ export default defineComponent({
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background: #f9f9f9;
+  background: $white100;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
