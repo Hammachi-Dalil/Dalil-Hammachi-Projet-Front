@@ -10,4 +10,11 @@ img {
 body {
     font-family: 'Poppins', sans-serif;
   }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Empêche le scroll horizontal */
+    max-width: 100%; /* Empêche les éléments de dépasser la largeur */
+  }
   

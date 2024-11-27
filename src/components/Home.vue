@@ -95,7 +95,7 @@ function getText()  {
     min-height: 100vh;
     color: $white;
     h1{
-      color: $primaryColorMconnexionle;
+      color: $primaryColorClaire;
     }
   }
   }
@@ -108,7 +108,7 @@ function getText()  {
     min-height: 100vh;
     color: $white;
     h1{
-      color: $primaryColorMconnexionle;
+      color: $primaryColorClaire;
     }
   }
   }
@@ -168,7 +168,7 @@ function getText()  {
     min-height: 100vh;
     color: $white;
     h1{
-      color: $primaryColorMconnexionle;
+      color: $primaryColorClaire;
     }
   }
 }
