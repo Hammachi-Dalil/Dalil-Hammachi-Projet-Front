@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import Form from './Form.vue';
+
 
 const props = defineProps<{
     variant?: "inscription" | "connexion";
@@ -73,7 +75,7 @@ function getText()  {
                 '-inscription': variant === 'inscription'}">
           {{ getText() }}
         </h1>
-        <MyForm :titre="getTitreBouton()"/>
+        <Form :titre="getTitreBouton()"/>
         <p
 :class="{'redirect': true,
                 '-connexion': variant === 'connexion',
