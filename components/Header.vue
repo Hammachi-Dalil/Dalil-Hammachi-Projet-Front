@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, onUnmounted } from 'vue';
-import { RouterLink } from 'vue-router';
 
 onUnmounted(() => {
   manageBodyScroll(false); // Réactive le scroll si le composant est démonté
@@ -44,9 +43,12 @@ const manageBodyScroll = (disableScroll: boolean) => {
       class="header__menu"
       :class="{ 'header__menu--mobile': isMenuOpen }"
     >
-      <RouterLink class="header__menu-item" to="/" @click="closeMenu">Accueil</RouterLink>
-      <RouterLink class="header__menu-item" to="/inscription" @click="closeMenu">Inscription</RouterLink>
-      <RouterLink class="header__menu-item" to="/MyHabits" @click="closeMenu">Mes Habitudes</RouterLink>
+
+  <NuxtLink class="header__menu-item" to="/" @click="closeMenu">Accueil</NuxtLink>
+      <NuxtLink class="header__menu-item" to="/inscription" @click="closeMenu">Inscription</NuxtLink>
+      <NuxtLink class="header__menu-item" to="/MyHabits" @click="closeMenu">Mes Habitudes</NuxtLink> 
+
+
     </div>
   </div>
 </template>
