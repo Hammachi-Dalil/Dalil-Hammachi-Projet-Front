@@ -46,7 +46,7 @@ const manageBodyScroll = (disableScroll: boolean) => {
     >
       <RouterLink class="header__menu-item" to="/" @click="closeMenu">Accueil</RouterLink>
       <RouterLink class="header__menu-item" to="/inscription" @click="closeMenu">Inscription</RouterLink>
-      <RouterLink class="header__menu-item" to="/Habitude" @click="closeMenu">Ajouter une habitude</RouterLink>
+      <RouterLink class="header__menu-item" to="/MyHabits" @click="closeMenu">Mes Habitudes</RouterLink>
     </div>
   </div>
 </template>
@@ -85,8 +85,27 @@ const manageBodyScroll = (disableScroll: boolean) => {
     gap: 20px;
 
     &-item {
-      font-size: 1rem;
-    }
+  font-size: 1rem;
+  position: relative; // Nécessaire pour positionner le pseudo-élément
+
+  // Ajout du pseudo-élément pour le soulignement
+  &::before {
+    content: ''; // Nécessaire pour afficher le pseudo-élément
+    position: absolute;
+    bottom: 0; // Place le soulignement sous le texte
+    left: 0; // Commence à gauche
+    width: 0; // Initialement, le soulignement est invisible
+    height: 2px; // Épaisseur du soulignement
+    background-color: currentColor; // Utilise la couleur du texte
+    transition: width 0.3s ease; // Animation fluide
+  }
+
+  // Animation au survol
+  &:hover::before {
+    width: 100%; // Étend le soulignement sur toute la largeur
+  }
+}
+
 
     /* Styles spécifiques au menu mobile */
     &--mobile {

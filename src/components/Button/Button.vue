@@ -2,7 +2,7 @@
 
 <script setup lang="ts">
 defineProps<{
-    variant?: "primary" | "outline";
+    variant?: "primary" | "outline" | "white";
     disabled?: boolean
 }>();
 
@@ -12,6 +12,7 @@ defineProps<{
     <button :class="{
         'button': true,
         '-outline': variant === 'outline',
+        '-white': variant === 'white',
         '-disabled': disabled
     }">
         <slot></slot>
@@ -53,6 +54,16 @@ defineProps<{
 
   &.-small {
     padding: rem(8px) rem(16px);
+  }
+
+  &.-white {
+    background: $white;
+    color: $primaryColor;
+    border: none;
+    &:hover {
+      color: $primaryDarkColor;
+      font-weight: bold;
+    }
   }
 };
 </style>
