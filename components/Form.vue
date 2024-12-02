@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import {ref } from "vue";
-import MyButton from "../Button/Button.vue";
 
 const email = ref<string>("");
 const password = ref<string>("");
@@ -11,7 +9,8 @@ const onSubmit = (): void => {
 };
 
 defineProps({
-  titre: String
+  titre: {type: String,
+          default: "Connexion"} 
 })
 
 
@@ -21,7 +20,7 @@ defineProps({
 <template>
   <div class="login-form">
     <h2 class="login-form__title">{{ titre }}</h2>
-    <form class="login-form__form" @submit.prevent="onSubmit">
+    <Form class="login-form__form" @submit.prevent="onSubmit">
       <div class="login-form__group">
         <label for="email" class="login-form__label">Email</label>
         <input
@@ -47,7 +46,7 @@ defineProps({
       </div>
 
       <!-- Bouton pour valider -->
-      <MyButton class="login-form__button" type="submit">{{ titre }}</MyButton>
+      <Button class="login-form__button" type="submit">{{ titre }}</Button>
     </form>
   </div>
 </template>

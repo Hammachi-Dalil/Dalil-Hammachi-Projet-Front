@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MyForm from '../components/form/Form.vue';
+
 
 const props = defineProps<{
     variant?: "inscription" | "connexion";
@@ -77,7 +77,7 @@ function getText()  {
         <p
 :class="{'redirect': true,
                 '-connexion': variant === 'connexion',
-                '-inscription': variant === 'inscription'}">{{ getRedirectText() }} <router-link :to="getRedirectLink()" class="home__link">ici</router-link>.
+                '-inscription': variant === 'inscription'}">{{ getRedirectText() }} <NuxtLink :to="getRedirectLink()" class="home__link">ici</NuxtLink>.
         </p>
       </div>
     </div>
