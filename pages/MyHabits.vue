@@ -24,15 +24,19 @@ const habitudes = [
 </script>
 
 <template>
+  <div>
   <h1 class="title">Mes Habitudes</h1>
     <div class="parent">
+      
       <CardHabit
-v-for="(habitude, index) in habitudes"
+        v-for="(habitude, index) in habitudes"
         :key="index"
         :title="habitude.title"
         :description="habitude.description"
       />
     </div>
+
+  </div>
 </template>
 
 <style lang="scss">
