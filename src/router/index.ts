@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Inscription from '@/views/Inscription.vue'
+import MyHabits from '@/views/MyHabits.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +23,11 @@ const router = createRouter({
       path: '/inscription',
       name: 'inscription',
       component: Inscription,
+    },
+    {
+      path: '/MyHabits',
+      name: 'MyHabits',
+      component: MyHabits,
     },
   ],
 })
