@@ -9,13 +9,14 @@ defineProps<{
 </script>
 
 <template>
-    <button :class="{
+    <button
+:class="{
         'button': true,
         '-outline': variant === 'outline',
         '-white': variant === 'white',
         '-disabled': disabled
     }">
-        <slot></slot>
+        <slot/>
     </button>
 </template>
 

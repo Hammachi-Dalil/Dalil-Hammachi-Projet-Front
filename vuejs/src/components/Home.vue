@@ -56,23 +56,26 @@ function getText()  {
 </script>
 
 <template>
-  <main :class="{'home': true,
+  <main
+:class="{'home': true,
                 '-connexion': variant === 'connexion',
                 '-inscription': variant === 'inscription'}">
 
     <div class="home__content">
       <div class="home__image">
-        <img  :src="getImage()" alt="Illustration" />
+        <img  :src="getImage()" alt="Illustration" >
       </div>
 
       <div class="home__form">
-        <h1 :class="{'title': true,
+        <h1
+:class="{'title': true,
                 '-connexion': variant === 'connexion',
                 '-inscription': variant === 'inscription'}">
           {{ getText() }}
         </h1>
         <MyForm :titre="getTitreBouton()"/>
-        <p :class="{'redirect': true,
+        <p
+:class="{'redirect': true,
                 '-connexion': variant === 'connexion',
                 '-inscription': variant === 'inscription'}">{{ getRedirectText() }} <router-link :to="getRedirectLink()" class="home__link">ici</router-link>.
         </p>

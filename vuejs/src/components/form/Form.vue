@@ -25,25 +25,25 @@ defineProps({
       <div class="login-form__group">
         <label for="email" class="login-form__label">Email</label>
         <input
-          type="email"
           id="email"
+          v-model="email"
+          type="email"
           class="login-form__input"
           placeholder="Entrez votre email"
-          v-model="email"
           required
-        />
+        >
       </div>
 
       <div class="login-form__group">
         <label for="password" class="login-form__label">Mot de passe</label>
         <input
-          type="password"
           id="password"
+          v-model="password"
+          type="password"
           class="login-form__input"
           placeholder="Entrez votre mot de passe"
-          v-model="password"
           required
-        />
+        >
       </div>
 
       <!-- Bouton pour valider -->
