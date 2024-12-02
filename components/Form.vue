@@ -20,7 +20,7 @@ defineProps({
 <template>
   <div class="login-form">
     <h2 class="login-form__title">{{ titre }}</h2>
-    <Form class="login-form__form" @submit.prevent="onSubmit">
+    <form class="login-form__form" @submit.prevent="onSubmit">
       <div class="login-form__group">
         <label for="email" class="login-form__label">Email</label>
         <input

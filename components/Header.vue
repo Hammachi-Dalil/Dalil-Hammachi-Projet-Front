@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, onUnmounted } from 'vue';
 
 onUnmounted(() => {
   manageBodyScroll(false); // Réactive le scroll si le composant est démonté
