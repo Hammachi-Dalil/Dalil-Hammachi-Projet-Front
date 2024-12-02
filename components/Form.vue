@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import {ref } from "vue";
-import MyButton from "../Button/Button.vue";
 
 const email = ref<string>("");
 const password = ref<string>("");
@@ -11,7 +9,8 @@ const onSubmit = (): void => {
 };
 
 defineProps({
-  titre: String
+  titre: {type: String,
+          default: "Connexion"} 
 })
 
 
