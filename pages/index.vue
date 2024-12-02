@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
-import CardHabit from '~/components/CardHabit.vue';
-import Home from '~/components/Home.vue';
+
 </script>
 
 <template>
