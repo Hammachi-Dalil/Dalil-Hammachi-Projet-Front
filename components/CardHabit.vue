@@ -1,7 +1,5 @@
 <script setup lang="ts">
 
-import MyButton from './Button/Button.vue';
-
 defineProps<{
   title: string;
   description: string;
@@ -15,7 +13,7 @@ defineProps<{
     <p>{{ description }}</p>
 
     <div class="card__buttons">
-    <MyButton variant="white">Ajouter</MyButton>
+    <Button variant="white">Ajouter</Button>
   </div>
   </div>
 

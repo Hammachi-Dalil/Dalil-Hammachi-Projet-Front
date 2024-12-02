@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import CardHabit from '~/components/CardHabit.vue';
 import Home from '~/components/Home.vue';
 </script>
 
@@ -7,7 +8,7 @@ import Home from '~/components/Home.vue';
     <div>
         <h1>Index</h1>
         <Button variant="primary">Primary</Button>
-        <Home variant="inscription"/>
+        
        
     </div>
 
