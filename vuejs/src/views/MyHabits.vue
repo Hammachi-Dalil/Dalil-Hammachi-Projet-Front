@@ -25,7 +25,8 @@ const habitudes = [
 <template>
   <h1 class="title">Mes Habitudes</h1>
     <div class="parent">
-      <UneHabitude v-for="(habitude, index) in habitudes"
+      <UneHabitude
+v-for="(habitude, index) in habitudes"
         :key="index"
         :title="habitude.title"
         :description="habitude.description"
