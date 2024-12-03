@@ -8,6 +8,11 @@ const {data: post} = await useSanityQuery<SanityDocument>(POST_QUERY, {slug: rou
 
 console.log(post);
 
+if (!post.value) {
+    throw createError({statusCode: 404, statusMessage: 'le post est introuvable'});
+}
+
+
 
 </script>
 
@@ -19,7 +24,8 @@ console.log(post);
 
     
         <SanityContent :blocks="post.body" />
-        <SanityImage :asset-id="post.image.asset._ref" alt="l'image"/>
+        <SanityImage v-if="post.image" :asset-id="post.image.asset._ref" alt="l'image"/>
+
 
     
     </div>

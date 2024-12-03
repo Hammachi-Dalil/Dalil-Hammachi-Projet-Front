@@ -33,6 +33,7 @@ definePageMeta({
                             <img v-if="post.image" :src="urlFor(post.image)?.url()" alt="" >
                         </NuxtLink>
                         
+                        
                     </li>
                 </ul>
         </div>
