@@ -9,8 +9,14 @@ const filter = ref('');
 
 
 function onCategoryClick(categorIES: SanityDocument) {
-    filter.value = categorIES.slug.current
-    console.log(filter.value)
+    page.value = 1;
+    
+    if (filter.value === categorIES.slug.current) {
+        filter.value = '';
+    }
+    else {
+        filter.value = categorIES.slug.current
+    }
 }
 
 
@@ -73,13 +79,13 @@ definePageMeta({
 
                     filter : {{ filter }}
 
-                    <div class="category">
+                    <div class="category" >
                         <div v-for="(categorIES, index) in  category" :key="index"  @click="onCategoryClick(categorIES)" >
                                 <button :class="['category__button', {'is-active': filter == categorIES.slug.current}]"> {{  categorIES.title }}</button>
                         </div>
                     </div>
 
-                <ul class="blog">
+                <ul v-if="posts && posts.length "  class="blog">
                     <li v-for="post in posts" :key="post._id">
                         <div class="blog__card">
                             <NuxtLink class="blog__card__title" :to="`/blog/${post.slug.current}`">
@@ -92,6 +98,8 @@ definePageMeta({
                         </div>         
                     </li>
                 </ul>
+
+              
 
 
                 on affiche la page {{ page }}
