@@ -87,16 +87,6 @@ main {
         justify-content: center;
       }
 
-  &__content {
-    margin: rem(20px) auto;
-    padding: 0 rem(15px);
-    max-width: rem(800px);
-
-    p {
-      margin: 10px 0;
-      font-size: 1.2rem;
-    }
-  }
 
   &__stats {
     margin: 2vh;
@@ -112,6 +102,17 @@ main {
         background: $primaryColorClaire;
         cursor: none;
       }
+      }
+
+      h2 {
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+      }
+
+      p {
+        text-align: center;
+        margin: 0;
       }
       
       
@@ -143,9 +144,7 @@ main {
       }
     }
 
-    &__stats {
-    
-    }
+  
 
     &__cards {
       flex-direction: column;
