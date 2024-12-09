@@ -48,7 +48,7 @@ function getText()  {
 
   function getRedirectLink()  {
     if (props.variant === 'inscription') {
-      return ('/');}
+      return ('/connexion');}
     else if (props.variant === 'connexion')
       {return ('/inscription');
     }
