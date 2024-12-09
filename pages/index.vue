@@ -13,7 +13,6 @@ const {urlFor} = useSanityImage();
 
 <template>
   <main class="homepage">
-    {{ homepage }}
     <div class="homepage__hero">
       <div
         v-if="homepage?.image"
@@ -30,16 +29,11 @@ const {urlFor} = useSanityImage();
     </div>
 
     <div class="homepage__stats">
-      <ul class="homepage__stats-list">
-        <li
-          v-for="stat in homepage?.hero.stats"
-          :key="stat._key"
-          class="homepage__stats-item"         
-        >
-          <p class="homepage__stats-value">{{ stat.value }}</p>
-          <p class="homepage__stats-text">{{ stat.text }}</p>
-        </li>
-      </ul>
+        <div v-for="stat in homepage?.hero.stats" :key="stat._key" class="homepage__stats-item">      
+          <CardHeroStat :value="stat.value" :text="stat.text" />
+        </div>   
+        
+   
     </div>
 
     <div class="homepage__fonctionnalitees">
@@ -59,6 +53,10 @@ const {urlFor} = useSanityImage();
 
 
 <style lang="scss">
+
+main {
+  margin-bottom: 4vh;
+}
 .homepage {
   &__hero {
     position: relative;
@@ -101,49 +99,23 @@ const {urlFor} = useSanityImage();
   }
 
   &__stats {
-    margin: rem(20px) auto;
-    max-width: rem(800px);
+    margin: 2vh;
     display: flex;
     justify-content: center;
+    gap: rem(20px);
 
-    &-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: rem(20px);
-      list-style: none;
-      padding: 0;
-      width: fit-content;
-    }
-
-    &-item {
-      flex: 1 1 calc(33.333% - 20px); // Trois colonnes avec un gap de 20px
-      background: $white100;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      text-align: center;
-
-      &:hover {
+      &-item {
+        border-radius: rem(8px);
+        &:hover {
         transform: translateY(-5px);
         transition: transform 0.3s;
         background: $primaryColorClaire;
         cursor: none;
       }
-      
-
-      &-value {
-        font-size: 2rem;
-        font-weight: bold;
-        color: $titleColor;
       }
-
-      &-text {
-        font-size: 1rem;
-        color: #666;
-      }
-
       
-    }
+      
+    
   }
 
   &__fonctionnalitees h1 {
@@ -157,5 +129,29 @@ const {urlFor} = useSanityImage();
     margin: 4vh 0;
   }
 
+}
+
+@include small-down() {
+  .homepage {
+    &__hero {
+      &-background {
+        height: rem(200px);
+      }
+
+      &-title {
+        font-size: rem(48px);
+      }
+    }
+
+    &__stats {
+    
+    }
+
+    &__cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
 }
 </style>  

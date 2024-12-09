@@ -8,11 +8,11 @@ defineProps<{
 </script>
 
 <template>
-  <div class="card">
+  <div class="c-card-habit">
     <h2>{{ title }}</h2>
     <p>{{ description }}</p>
 
-    <div class="card__buttons">
+    <div class="c-card-habit__buttons">
     <Button variant="white">Ajouter</Button>
   </div>
   </div>
@@ -20,7 +20,7 @@ defineProps<{
 </template>
 
 <style lang="scss">
-.card {
+.c-card-habit {
   padding: 2vh 4vh;
   background: linear-gradient(45deg, $primaryColor, $primaryColorClaire);
   border-radius: rem(8px);
