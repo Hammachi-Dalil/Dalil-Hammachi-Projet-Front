@@ -1,4 +1,8 @@
 <script setup lang="ts">
+
+const {data, refresh } = await useAsyncData('dashboard', async () => { 
+
+
 const response = await fetch(`http://localhost:4000/dashboard`, {
     method: 'GET',
     // on envoie la valeur du token dans le cookie de à la requête pour s'authentifier auprès de l'API express
@@ -7,9 +11,16 @@ const response = await fetch(`http://localhost:4000/dashboard`, {
     }
 });
 
+
 console.log('response : ', response);
 
-const data = await response.json();
+return  await response.json();
+});
+
+function onHabitCreated() {
+    console.log('une nouvelle habitude a été créée');
+    refresh();
+}
 
 
 </script>
@@ -23,7 +34,7 @@ const data = await response.json();
 
     <h2>Habitudes Globales</h2>
     <ul>
-        <li v-for="(habit, index) in data.globalHabits" :key="index">{{ habit.title }} : {{ habit.description }}</li>
+        <li v-for="(habit, index) in data.globalHabits" :key="index">{{ habit.title }} : {{ habit.description }} <Button /></li>
     
     </ul>
 
@@ -33,7 +44,9 @@ const data = await response.json();
     
     </ul>
 
-    <div><AddHabitForm /></div>
+    <div>
+        <AddHabitForm @habit:created="onHabitCreated"/>
+    </div>
    
 </main>
 </template>

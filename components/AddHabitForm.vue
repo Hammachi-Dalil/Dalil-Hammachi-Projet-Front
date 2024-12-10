@@ -4,6 +4,8 @@ const habitDescription = ref('');
 const habitIsGloable = ref(false);
 const feedbackMessage = ref('');
 
+
+const emit = defineEmits(['habit:created']);
 async function addHabit() {
   try {
     const response = await fetch('http://localhost:4000/habits', {
@@ -27,6 +29,8 @@ async function addHabit() {
       return;
     }
 
+    
+
     const data = await response.json();
     feedbackMessage.value = `Habitude ajoutée : ${data.title};`
     console.log('Succès:', data);
@@ -34,7 +38,10 @@ async function addHabit() {
     // Réinitialiser les champs du formulaire
     habitTitle.value = '';
     habitDescription.value = '';
-} catch (error) {
+
+    emit ('habit:created');
+    } 
+    catch (error) {
     feedbackMessage.value = 'Erreur réseau ou interne';
     console.error('Erreur réseau ou interne:', error);
 }
