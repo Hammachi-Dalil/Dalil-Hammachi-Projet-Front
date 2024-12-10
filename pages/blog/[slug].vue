@@ -13,14 +13,26 @@ const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0]{
   }`;
 const route = useRoute();
 
-const {data: post} = await useSanityQuery<SanityDocument>(POST_QUERY, {slug: route.params.slug});
 
-console.log(post);
+const {data: post} = await useSanityQuery<SanityDocument>(POST_QUERY, {slug: route.params.slug});
 
 if (!post.value) {
     throw createError({statusCode: 404, statusMessage: 'le post est introuvable'});
 }
 
+
+
+
+console.log(post);
+
+const {urlFor} = useSanityImage();
+
+  useSeoMeta({
+    title: `${post.value.title} | Tracker`,
+    description: 'Vous retrouverez ici tous les articles de notre blog qui concernent les nouveautés de notre application',
+    ogImage: post.value.image && urlFor(post.value.image) ? urlFor(post.value.image)?.url() : '/img/Meta-default.jpg'
+
+});
 
 
 </script>

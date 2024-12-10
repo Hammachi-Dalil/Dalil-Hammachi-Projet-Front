@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import type { SanityDocument } from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+
+
+useSeoMeta({
+  title: 'Blog | Tracker',
+  description: 'Vous retrouverez ici tous les articles de notre blog qui concernent les nouveauté de notre application',
+  ogImage: '/img/Meta-default.jpg'
+})
 
 const filter = ref('');
 
@@ -60,11 +66,7 @@ const { data: category } = await useSanityQuery<SanityDocument[]>(groq`*[
 
 
 
-const { projectId, dataset } = useSanity().client.config();
-const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
+const {urlFor} = useSanityImage();
 
 definePageMeta({
     layout: 'minimal'
@@ -200,7 +202,10 @@ ul, li{
 
     }
 
-    .title {
+   
+}
+
+.title {
         text-align: center;
         font-size: rem(48px);
         color: $primaryColor;
@@ -211,5 +216,4 @@ ul, li{
         font-size: rem(16px);
         color: $primaryColor;
     }
-}
 </style>

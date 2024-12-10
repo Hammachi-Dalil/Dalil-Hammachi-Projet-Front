@@ -1,10 +1,8 @@
 <script setup lang="ts">
 
-import Form from './Form.vue';
-
 
 const props = defineProps<{
-    variant?: "inscription" | "connexion";
+    variant: "inscription" | "connexion";
 }>();
 
 function getImage() {
@@ -27,6 +25,8 @@ function getTitreBouton() {
     return ('Connexion');
   }
 
+  return ''
+
 }
 
 function getText()  {
@@ -48,7 +48,7 @@ function getText()  {
 
   function getRedirectLink()  {
     if (props.variant === 'inscription') {
-      return ('/');}
+      return ('/connexion');}
     else if (props.variant === 'connexion')
       {return ('/inscription');
     }
@@ -75,7 +75,7 @@ function getText()  {
                 '-inscription': variant === 'inscription'}">
           {{ getText() }}
         </h1>
-        <Form :titre="getTitreBouton()"/>
+        <Form :titre="getTitreBouton()" :action="props.variant"/>
         <p
 :class="{'redirect': true,
                 '-connexion': variant === 'connexion',
@@ -134,9 +134,6 @@ function getText()  {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background: url('@/assets/img/marbre.jpg')
-    no-repeat center center;
-    background-size: cover;
 
 
     @include small-down() {

@@ -3,15 +3,54 @@
 const email = ref<string>("");
 const password = ref<string>("");
 
-const onSubmit = (): void => {
+
+const router = useRouter();
+
+const props = defineProps<{
+action: 'inscription' | 'connexion',
+titre: string,
+}>();
+
+async function onSubmit (event: Event) {
+  event?.preventDefault();
+
+  try{
+    const route = props.action === 'connexion' ? 'auth/login' : 'auth/register';
+  
+
+  const response = await fetch(`http://localhost:4000/${route}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username: email.value,
+      password: password.value
+    })
+
+  });
+
+  if (!response.ok) throw new Error('Erreur lors de l\'inscription');
+  const data = await response.json();
+  console.log("Data:", data);
+
+  const cookieJwt = useCookie('api_tracking_jwt');
+  cookieJwt.value = data.token;
+
+  await router.push('/app/dashboard');
+
   console.log("Email:", email.value);
   console.log("Password:", password.value);
+  console.log("le formulaire a bien été envoyé");
+  console.log('Response : ', response);
+} catch (error) {
+  console.error('Erreur lors de l\'inscription', error);
 };
 
-defineProps({
-  titre: {type: String,
-          default: "Connexion"} 
-})
+
+
+}
+
 
 
 </script>
