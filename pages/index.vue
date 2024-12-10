@@ -61,7 +61,7 @@ main {
   &__hero {
     position: relative;
     text-align: center;
-    color: white;
+    color: $white;
 
     &-background {
       position: relative;
@@ -69,7 +69,7 @@ main {
       background-position: center;
       background-repeat: no-repeat;
       width: 100%;
-      height: 400px; // Ajustez la hauteur selon vos besoins
+      height: rem(400px);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -78,7 +78,7 @@ main {
     &-title {
       font-size: rem(96px);
       font-weight: bold;
-      color: $primaryColorClaire;
+      color: $white;
     }
   }
 
