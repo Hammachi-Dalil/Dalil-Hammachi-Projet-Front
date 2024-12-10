@@ -46,12 +46,7 @@ async function onSubmit (event: Event) {
 } catch (error) {
   console.error('Erreur lors de l\'inscription', error);
 };
-
-
-
 }
-
-
 
 </script>
 
