@@ -14,11 +14,16 @@ const response = await fetch(`http://localhost:4000/dashboard`, {
 
 console.log('response : ', response);
 
-return  await response.json();
+return await response.json();
 });
 
 function onHabitCreated() {
     console.log('une nouvelle habitude a été créée');
+    refresh();
+}
+
+function onHabitDeleted() {
+    console.log('une habitude a été supprimée');
     refresh();
 }
 
@@ -28,19 +33,15 @@ function onHabitCreated() {
 <template>
     <main>
     <h1>Dashboard</h1>
-    <pre>
-        {{ data }}
-    </pre>
-
     <h2>Habitudes Globales</h2>
-    <ul>
-        <li v-for="(habit, index) in data.globalHabits" :key="index">{{ habit.title }} : {{ habit.description }} <Button /></li>
+    <ul class="parent">
+        <li v-for="(habit, index) in data.globalHabits" :key="index"><CardHabit :id="habit.id" @click="onHabitDeleted"><h1>{{ habit.title }} </h1> <p>{{ habit.description }} </p></CardHabit></li>
     
     </ul>
 
     <h2>Habitudes Personnelle</h2>
-    <ul>
-        <li v-for="(habit, index) in data.personalHabits" :key="index">{{ habit.title }} : {{ habit.description }}</li>
+    <ul class="parent">
+        <li v-for="(habit, index) in data.personalHabits" :key="index"><CardHabit :id="habit.id"  @click="onHabitDeleted"><h1>{{ habit.title }}</h1> <p>{{ habit.description }}</p></CardHabit></li>
     
     </ul>
 
@@ -53,4 +54,18 @@ function onHabitCreated() {
 
 
 <style lang="scss">
+.parent {
+  display: grid;
+  gap: rem(16px);  // Espace entre les éléments du grid
+  grid-template-columns: repeat(3, 1fr); // Par défaut, 3 colonnes (PC)
+  list-style: none;
+
+  // Mixin pour les petits écrans (mobile)
+  @include large-down {
+    grid-template-columns: repeat(1, 1fr);
+    gap: rem(16px);
+
+    margin: 3vh 0;
+  }
+}
 </style>

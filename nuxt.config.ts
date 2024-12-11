@@ -15,6 +15,16 @@ export default defineNuxtConfig({
     dataset: "production",
   },
 
+  runtimeConfig: {
+    public: {
+      apiTrackingBaseUrl: ''
+    }
+  },
+
+  imports: {
+    dirs: ['utils/**']
+  },
+
   vite: {
     css: {
       preprocessorOptions: {
