@@ -1,43 +1,63 @@
 <script setup lang="ts">
-const response = await fetch(`http://localhost:4000/dashboard`, {
-    method: 'GET',
-    // on envoie la valeur du token dans le cookie de à la requête pour s'authentifier auprès de l'API express
-    headers: {
-        Authorization: `Bearer ${useCookie('api_tracking_jwt').value}`
-    }
+
+
+
+const {data, refresh } = await useAsyncData('dashboard', async () => { 
+
+
+    return await useTrackingApi('/dashboard', {method: 'GET'});
 });
 
-console.log('response : ', response);
+function onHabitCreated() {
+    console.log('une nouvelle habitude a été créée');
+    refresh();
+}
 
-const data = await response.json();
+function onHabitDeleted() {
+    console.log('une habitude a été supprimée');
+    refresh();
+}
 
 
 </script>
 
 <template>
-    <main>
+    <main v-if="data">
     <h1>Dashboard</h1>
-    <pre>
-        {{ data }}
-    </pre>
-
     <h2>Habitudes Globales</h2>
-    <ul>
-        <li v-for="(habit, index) in data.globalHabits" :key="index">{{ habit.title }} : {{ habit.description }}</li>
+    <div class="parent">
+        <div v-for="(habit, index) in data.globalHabits" :key="index"><CardHabit :id="habit.id" @click="onHabitDeleted"><h1>{{ habit.title }} </h1> <p>{{ habit.description }} </p></CardHabit></div>
     
-    </ul>
+    </div>
 
     <h2>Habitudes Personnelle</h2>
-    <ul>
-        <li v-for="(habit, index) in data.personalHabits" :key="index">{{ habit.title }} : {{ habit.description }}</li>
+    <div class="parent">
+        <div v-for="(habit, index) in data.personalHabits" :key="index"><CardHabit :id="habit.id"  @click="onHabitDeleted"><h1>{{ habit.title }}</h1> <p>{{ habit.description }}</p></CardHabit></div>
     
-    </ul>
+    </div>
 
-    <div><AddHabitForm /></div>
+    <div>
+        <AddHabitForm @habit:created="onHabitCreated"/>
+    </div>
    
 </main>
 </template>
 
 
 <style lang="scss">
+.parent {
+  display: grid;
+  gap: rem(16px);  // Espace entre les éléments du grid
+  grid-template-columns: repeat(3, 1fr); // Par défaut, 3 colonnes (PC)
+  list-style: none;
+  padding: none;
+
+  // Mixin pour les petits écrans (mobile)
+  @include large-down {
+    grid-template-columns: repeat(1, 1fr);
+    gap: rem(16px);
+
+    margin: 3vh 0;
+  }
+}
 </style>

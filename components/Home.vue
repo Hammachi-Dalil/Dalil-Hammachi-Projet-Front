@@ -94,7 +94,7 @@ function getText()  {
 
   &.-connexion{
     @include large-down() {
-    background: url('@/assets/img/Obi.png')
+    background: url('@/assets/img/obi.png')
       no-repeat center center;
     background-size: cover;
     min-height: 100vh;
@@ -163,16 +163,6 @@ function getText()  {
     }
   }
 
-  @include large-down() {
-    background: url('@/assets/img/connexion.png')
-      no-repeat center center;
-    background-size: cover;
-    min-height: 100vh;
-    color: $white;
-    h1{
-      color: $primaryColorClaire;
-    }
-  }
 }
 
 .title {

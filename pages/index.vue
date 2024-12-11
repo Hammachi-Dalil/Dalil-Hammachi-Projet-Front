@@ -23,6 +23,7 @@ const {urlFor} = useSanityImage();
       </div>
     </div>
 
+    <!-- possiblement à supprimer -->
     <div class="homepage__content">
       <p>{{ homepage?.hero.title }}</p>
       <p>{{ homepage?.hero.text }}</p>
@@ -37,8 +38,8 @@ const {urlFor} = useSanityImage();
     </div>
 
     <div class="homepage__fonctionnalitees">
-      <h1>{{ homepage?.fonctionnalitees.title }}</h1>
-      <p>{{ homepage?.fonctionnalitees.text }}</p>
+      <h1 class="homepage__fonctionnalitees-title">{{ homepage?.fonctionnalitees.title }}</h1>
+      <p class="homepage__fonctionnalitees-text">{{ homepage?.fonctionnalitees.text }}</p>
     </div>
 
 
@@ -103,28 +104,17 @@ main {
         cursor: none;
       }
       }
-
-      h2 {
-        font-weight: bold;
-        text-align: center;
-        margin: 0;
-      }
-
-      p {
-        text-align: center;
-        margin: 0;
-      }
       
       
     
   }
 
-  &__fonctionnalitees h1 {
+  &__fonctionnalitees-title {
     text-align: center;
     font-weight: bold;    
   }
 
-  &__fonctionnalitees p {
+  &__fonctionnalitees-text {
     text-align: center;
     font-size: rem(16px);
     margin: 4vh 0;
