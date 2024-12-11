@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+
+
 const {data, refresh } = await useAsyncData('dashboard', async () => { 
 
 
@@ -23,16 +25,16 @@ function onHabitDeleted() {
     <main v-if="data">
     <h1>Dashboard</h1>
     <h2>Habitudes Globales</h2>
-    <ul class="parent">
-        <li v-for="(habit, index) in data.globalHabits" :key="index"><CardHabit :id="habit.id" @click="onHabitDeleted"><h1>{{ habit.title }} </h1> <p>{{ habit.description }} </p></CardHabit></li>
+    <div class="parent">
+        <div v-for="(habit, index) in data.globalHabits" :key="index"><CardHabit :id="habit.id" @click="onHabitDeleted"><h1>{{ habit.title }} </h1> <p>{{ habit.description }} </p></CardHabit></div>
     
-    </ul>
+    </div>
 
     <h2>Habitudes Personnelle</h2>
-    <ul class="parent">
-        <li v-for="(habit, index) in data.personalHabits" :key="index"><CardHabit :id="habit.id"  @click="onHabitDeleted"><h1>{{ habit.title }}</h1> <p>{{ habit.description }}</p></CardHabit></li>
+    <div class="parent">
+        <div v-for="(habit, index) in data.personalHabits" :key="index"><CardHabit :id="habit.id"  @click="onHabitDeleted"><h1>{{ habit.title }}</h1> <p>{{ habit.description }}</p></CardHabit></div>
     
-    </ul>
+    </div>
 
     <div>
         <AddHabitForm @habit:created="onHabitCreated"/>
@@ -48,6 +50,7 @@ function onHabitDeleted() {
   gap: rem(16px);  // Espace entre les éléments du grid
   grid-template-columns: repeat(3, 1fr); // Par défaut, 3 colonnes (PC)
   list-style: none;
+  padding: none;
 
   // Mixin pour les petits écrans (mobile)
   @include large-down {

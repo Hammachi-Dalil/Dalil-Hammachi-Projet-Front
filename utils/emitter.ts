@@ -2,7 +2,7 @@
 type EventType = `${string}:${string}`
 type EventCallback<T> = (detail: T) => void
 
-const $on = (eventType: EventType, callback: EventCallback<any>) => {
+const $on = (eventType: EventType, callback: EventCallback<unknown>) => {
   document.addEventListener(eventType, callback)
 }
 
@@ -11,7 +11,7 @@ const $trigger = <T>(eventType: EventType, detail?: T) => {
   document.dispatchEvent(event)
 }
 
-const $off = (eventType: EventType, callback: EventCallback<any>) => {
+const $off = (eventType: EventType, callback: EventCallback<unknown>) => {
   document.removeEventListener(eventType, callback)
 }
 

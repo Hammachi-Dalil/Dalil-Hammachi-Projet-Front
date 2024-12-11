@@ -48,9 +48,9 @@ async function deleteHabit() {
 </script>
 
 <template>
-  <div class="c-card-habit">
+  <div class="card-habit">
    <slot/>
-    <div class="c-card-habit__buttons">
+    <div class="card-habit__buttons">
     <Button variant="white" @click="deleteHabit">Supprimer</Button>
   </div>
   </div>
@@ -58,7 +58,7 @@ async function deleteHabit() {
 </template>
 
 <style lang="scss">
-.c-card-habit {
+.card-habit {
   padding: 2vh 4vh;
   background: linear-gradient(45deg, $primaryColor, $primaryColorClaire);
   border-radius: rem(8px);

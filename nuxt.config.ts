@@ -17,7 +17,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiTrackingBaseUrl: ''
+      apiTrackingBaseUrl: process.env.API_TRACKING_BASE_URL || ''
     }
   },
 

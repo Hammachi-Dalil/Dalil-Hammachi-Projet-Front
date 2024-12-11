@@ -13,12 +13,12 @@ defineProps<{
 
 <template>
     <main>
-  <div :class="{'card': true,
+  <div :class="{'CardFonctionnality': true,
                 '-Blue': variant === 'Blue',
                 '-Yellow': variant === 'Yellow',
                 '-Green': variant === 'Green'}">
-    <h2 v-if="title">{{ title }}</h2>
-    <p v-if="text">{{ text }}</p>
+    <h2 v-if="title" class="card-fonctionnality__title">{{ title }}</h2>
+    <p v-if="text" class="card-fonctionnality__text">{{ text }}</p>
 
   </div>
 </main>
@@ -26,7 +26,7 @@ defineProps<{
 </template>
 
 <style lang="scss">
-.card {
+.CardFonctionnality {
   padding: 2vh 4vh;
   background: $primaryColorClaire;
   border-radius: rem(8px);
@@ -36,10 +36,6 @@ defineProps<{
   width: fit-content;
   max-width: 30vh;
 
-  &__buttons {
-    display: flex;
-    justify-content: flex-end;
-  }
 
   &.-Blue {
     background: #bcffff;

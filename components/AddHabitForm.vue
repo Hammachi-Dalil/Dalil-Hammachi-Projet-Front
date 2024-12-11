@@ -52,16 +52,16 @@ async function addHabit() {
 </script>
 
 <template>
-    <div class="c-add-habit-form">
-        <h2>Ajouter une Habitude</h2>
+    <div class="add-habit-form">
+        <h2 class="add-habit-form__title">Ajouter une Habitude</h2>
         <form @submit.prevent="addHabit">
-            <div class="c-add-habit-form__group">
-                <label for="title">Titre</label>
-                <input id="title" v-model="habitTitle" type="text" placeholder="Entrez le titre de la Habitude">
+            <div class="add-habit-form__group">
+                <label for="title">Titre </label>
+                <input id="title" v-model="habitTitle" class="add-habit-form__input" type="text" placeholder="Entrez le titre">
             </div>
-            <div class="c-add-habit-form__group">
-                <label for="description">Description</label>
-                <input id="description" v-model="habitDescription" type="text"  placeholder="Entrez la description de la Habitude">
+            <div class="add-habit-form__group">
+                <label for="description">Description </label>
+                <input id="description" v-model="habitDescription" class="add-habit-form__input" type="text"  placeholder="Entrez la description">
             </div>
             <Button >Ajouter</Button>
         </form>
@@ -69,4 +69,32 @@ async function addHabit() {
 </template>
 
 <style lang="scss">
+.add-habit-form {
+    margin: 3vh 0;
+    padding: 1rem;
+    background-color: $primaryColorClaire;
+    border-radius: 5px;
+
+    &__title {
+        font-size: rem(36px);
+        
+    }
+
+    &__group {
+        margin: 1rem 0;
+    }
+
+    &__input {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        
+    }
+
+    &__input:focus {
+    border-color: $primaryColorClaire; // Utilisez border-color pour cibler uniquement la bordure
+    outline: none; // Facultatif, pour supprimer le contour par défaut
+}
+
+}
 </style>
