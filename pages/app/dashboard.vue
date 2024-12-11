@@ -3,18 +3,7 @@
 const {data, refresh } = await useAsyncData('dashboard', async () => { 
 
 
-const response = await fetch(`http://localhost:4000/dashboard`, {
-    method: 'GET',
-    // on envoie la valeur du token dans le cookie de à la requête pour s'authentifier auprès de l'API express
-    headers: {
-        Authorization: `Bearer ${useCookie('api_tracking_jwt').value}`
-    }
-});
-
-
-console.log('response : ', response);
-
-return await response.json();
+    return await useTrackingApi('/dashboard', {method: 'GET'});
 });
 
 function onHabitCreated() {
@@ -31,7 +20,7 @@ function onHabitDeleted() {
 </script>
 
 <template>
-    <main>
+    <main v-if="data">
     <h1>Dashboard</h1>
     <h2>Habitudes Globales</h2>
     <ul class="parent">
