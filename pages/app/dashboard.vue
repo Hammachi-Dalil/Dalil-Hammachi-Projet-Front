@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import type { DashboardPayload, PersonalHabit } from '~/@types/dashboard';
+import type { DashboardPayload } from '~/@types/dashboard';
 
-const habitToEdit = ref<Habit|null>(null);
-interface Habit {
-    id: number;
-    title: string;
-    description: string;
-}
+
 
 const {data, refresh } = await useAsyncData<DashboardPayload>('dashboard', async () => { 
 
@@ -25,24 +20,7 @@ function onHabitDeleted() {
 }
 
 
-// function onHabitEdit(habitId) {
-//   selectedHabit.value = data.personalHabits.find(habit => habit.id === habitId);
-// }
 
-const toggleEditHabit = (habit: Habit) => {
-    if  (habitToEdit.value?.id === habit.id) {
-        habitToEdit.value = null;
-    } else {
-        habitToEdit.value = habit;
-    }
-};
-
-function onHabitModified() {
-  console.log('une habitude a été modifiée');
-  refresh();
-  selectedHabit.value = null; // Réinitialiser après modification
-}
-const selectedHabit = ref<PersonalHabit|null>(null); // Habitude actuellement sélectionnée pour modification
 
 </script>
 
@@ -53,7 +31,7 @@ const selectedHabit = ref<PersonalHabit|null>(null); // Habitude actuellement s�
       <h2>Habitudes Globales</h2>
       <div class="parent">
         <div v-for="(habit, index) in data.globalHabits" :key="index">
-          <CardHabit :id="habit.id" @habit:delete="onHabitDeleted" @habit:edit="onHabitEdit">
+          <CardHabit :id="habit.id" @habit:delete="onHabitDeleted">
             <h1>{{ habit.title }}</h1>
             <p>{{ habit.description }}</p>
           </CardHabit>
@@ -63,7 +41,7 @@ const selectedHabit = ref<PersonalHabit|null>(null); // Habitude actuellement s�
       <h2>Habitudes Personnelles</h2>
       <div class="parent">
         <div v-for="(habit, index) in data.personalHabits" :key="index">
-          <CardHabit :id="habit.id" @habit:delete="onHabitDeleted" @habit:edit="onHabitEdit">
+          <CardHabit :id="habit.id" @habit:delete="onHabitDeleted">
             <h1>{{ habit.title }}</h1>
             <p>{{ habit.description }}</p>
           </CardHabit>
@@ -75,11 +53,6 @@ const selectedHabit = ref<PersonalHabit|null>(null); // Habitude actuellement s�
       </div>
   
       <!-- Affichage du formulaire de modification si une habitude est sélectionnée -->
-      <div v-if="selectedHabit">
-        <ModifierHabitForm :habit="selectedHabit" @habit:modified="toggleEditHabit" />
-      </div>
-
-      <ModifierHabitForm v-if="habitToEdit" :habit="habitToEdit" @habit:modified="toggleEditHabit" />
 
     </main>
   </template>

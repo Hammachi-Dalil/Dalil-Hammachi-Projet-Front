@@ -8,7 +8,7 @@ const props = defineProps({
 });
 
 // Définir les événements émis
-const emit = defineEmits(['habit:delete', 'habit:edit']);
+const emit = defineEmits(['habit:delete']);
 
 // Gestionnaire de message de retour
 const feedbackMessage = ref('');
@@ -49,10 +49,7 @@ async function deleteHabit() {
 
 
 
-// Fonction pour émettre un événement de modification
-function editHabit() {
-  emit('habit:edit', props.id);
-}
+
 
 
 </script>
@@ -62,7 +59,6 @@ function editHabit() {
    <slot/>
     <div class="card-habit__buttons">
     <Button variant="white" @click="deleteHabit">Supprimer</Button>
-    <Button variant="white" @click="editHabit">Modifier</Button>
     </div>
   </div>
 
