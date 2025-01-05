@@ -45,7 +45,9 @@ const manageBodyScroll = (disableScroll: boolean) => {
 
   <NuxtLink class="header__menu-item" to="/" @click="closeMenu">Accueil</NuxtLink>
       <NuxtLink class="header__menu-item" to="/inscription" @click="closeMenu">Inscription</NuxtLink>
+      <NuxtLink class="header__menu-item" to="/connexion" @click="closeMenu">Connexion</NuxtLink>
       <NuxtLink class="header__menu-item" to="/app/dashboard" @click="closeMenu">Mes Habitudes</NuxtLink> 
+      <NuxtLink class="header__menu-item" to="/blog" @click="closeMenu">Blog</NuxtLink>
 
 
     </div>
