@@ -45,6 +45,13 @@ async function deleteHabit() {
     console.error('Erreur réseau ou interne:', error);
   }
 }
+
+
+
+
+
+
+
 </script>
 
 <template>
@@ -52,7 +59,7 @@ async function deleteHabit() {
    <slot/>
     <div class="card-habit__buttons">
     <Button variant="white" @click="deleteHabit">Supprimer</Button>
-  </div>
+    </div>
   </div>
 
 </template>
