@@ -13,7 +13,8 @@ defineProps<{
 
 <template>
     <main>
-  <div :class="{'CardFonctionnality': true,
+  <div 
+  :class="{'CardFonctionnality': true,
                 '-Blue': variant === 'Blue',
                 '-Yellow': variant === 'Yellow',
                 '-Green': variant === 'Green'}">
