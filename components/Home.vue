@@ -99,7 +99,7 @@ function getText()  {
     background-size: cover;
     min-height: 100vh;
     color: $white;
-    h1{
+    .title{
       color: $primaryColorClaire;
     }
   }
@@ -112,7 +112,7 @@ function getText()  {
     background-size: cover;
     min-height: 100vh;
     color: $white;
-    h1{
+    .title{
       color: $primaryColorClaire;
     }
   }
