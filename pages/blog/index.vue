@@ -79,9 +79,11 @@ definePageMeta({
             <h1 class="title">Blog</h1>
                 <p class="subtitle">Retrouvez ici les derniers articles de notre blog</p>
 
-                    filter : {{ filter }}
+                    
 
                     <div class="category" >
+                        <p class="category__title">Filtres : {{ filter }} </p>
+
                         <div v-for="(categorIES, index) in  category" :key="index"  @click="onCategoryClick(categorIES)" >
                                 <button :class="['category__button', {'is-active': filter == categorIES.slug.current}]"> {{  categorIES.title }}</button>
                         </div>
